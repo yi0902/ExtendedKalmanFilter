@@ -51,9 +51,9 @@ void KalmanFilter::UpdateEKF(const VectorXd &z) {
   float c3 = atan(py/px);
   float pi = atan2(0, -1);
   if(c3 > pi){
-      c3 = c3 - pi;
+      c3 = c3 - 2*pi;
   }else if(c3 < -pi){
-      c3 = c3 + pi;
+      c3 = c3 + 2*pi;
   }
   VectorXd z_pred = VectorXd(3);
   z_pred << c2, c3, (px*vx+py*vy)/c2;
